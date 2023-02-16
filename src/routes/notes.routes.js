@@ -1,9 +1,13 @@
 const {Router} = require('express')
+const pool = require('../database')
+
 
 const router = Router()
 
-router.get('/notes', (req,res)=>{
-    res.send('Retrieveing notes')
+router.get('/notes', async (req,res)=>{
+    const result = await pool.query('SELECT NOW()')
+    console.log(result)
+    res.json('executed')
 })
 
 
