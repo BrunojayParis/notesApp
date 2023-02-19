@@ -5,14 +5,13 @@ function PostForm(props) {
     const [post, setPost] = useState({
         postName:"",
         postDescription:"",
-      })
+      })//this will be the new post
     
     const [loading, setLoading] = useState(false)  
     
     const handeChange = (e) =>{
         setPost({...post, [e.target.name]:e.target.value})
     }
-
     const handleSubmit = async (e)=>{
         e.preventDefault();
         

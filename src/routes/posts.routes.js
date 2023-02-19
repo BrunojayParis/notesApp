@@ -1,9 +1,6 @@
 const {Router} = require('express')
 const {getPosts, deletePost, createPost} = require('../controllers/posts.controller')
 
-
-
-
 const router = Router()
 //GET
 router.get('/posts', getPosts)
