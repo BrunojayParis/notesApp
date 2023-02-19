@@ -14,7 +14,7 @@ function PostForm(props) {
     }
 
     const handleSubmit = async (e)=>{
-        //e.preventDefault();
+        e.preventDefault();
         
         setLoading(true)
         const response = await fetch("http://localhost:4000/posts",{
@@ -25,9 +25,10 @@ function PostForm(props) {
             },
             body: JSON.stringify(post),
         });
-        await response.json();
-
+        const data = await response.json();
         setLoading(false)
+
+        props.setPosts([...props.posts, data])
     }
     return (
       <div>
