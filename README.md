@@ -22,7 +22,7 @@ git clone https://github.com/BrunojayParis/notesApp.git
 
 2. Abrir un terminal en la carpeta del repo.
 
-3.node-modules.
+3. Node-modules.
 
 ```bash
 npm install
