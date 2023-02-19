@@ -52,5 +52,5 @@ npm start
 Para correr el Front-end
 ```bash
 cd frontend
-npm run start
+npm start
 ```
