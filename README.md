@@ -24,6 +24,9 @@ git clone https://github.com/BrunojayParis/notesApp.git
 3. Node-modules.
 
 ```bash
+cd notesApp
+npm install
+cd frontend
 npm install
 ```
 4. Instalar dependencias.
@@ -48,6 +51,7 @@ CREATE TABLE post(
 
 Para correr el Back-end
 ```bash
+cd notesApp
 npm start
 ```
 Para correr el Front-end
