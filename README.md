@@ -1,9 +1,55 @@
-# Título del Proyecto
+# Post Manager
 
-_Acá va un párrafo que describa lo que es el proyecto_
+Challenge de desarrollo de aplicación en React con backend en NodeJS, Base de datos postgreSQL
 
-## Comenzando 🚀
+## Instalación :wrench:
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+### Requerimientos Previos :nut_and_bolt:
 
-Mira **Deployment** para conocer como desplegar el proyecto.
+1. Instalar Node, [Descargar NodeJs](https://nodejs.org/es/)
+
+2. Instalar postgresql, [Descargar postgresql](https://www.postgresql.org/download/). Puede ser dificil de instalar si nunca lo utilizaste antes, recomiendo ver un tutorial en Youitube.
+
+3. Clonar este repositorio. 
+
+```bash
+git clone https://github.com/BrunojayParis/notesApp.git
+```
+
+### Setup :hammer:
+
+1. Ir a la carpeta del repositorio en tu computadora.
+
+2. Abrir un terminal en la carpeta del repo
+
+3.node-modules
+
+```bash
+npm install
+```
+4. Instalar dependencias
+```bash
+npm i express morgan cors pg 
+```
+5. Crear una base de datos en postgreSQL 
+```bash
+CREATE DATABASE postsdb;
+
+CREATE TABLE post(
+    id SERIAL PRIMARY KEY,
+    postname VARCHAR(255) UNIQUE,
+    postdescription VARCHAR(255)
+);
+```
+6. completar los datos de la DB en \src\database.js
+
+##Run
+Para correr el backend
+```bash
+npm start
+```
+Para correr el Front-end
+```bash
+cd frontend
+npm run start
+```
