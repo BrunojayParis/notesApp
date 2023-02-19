@@ -24,9 +24,9 @@ function PostList(props) {
             <input type="text" onChange={filterHandler} placeholder="Filter Posts" />
         </form>
         <div className="posts">
-            <h3 className="name">name</h3>
-            <h3 className="description">description</h3>
-            <h3>action</h3>
+            <h3 className="name">Name</h3>
+            <h3 className="description">Description</h3>
+            <h3>Action</h3>
         </div>
         {filteredPosts.map((post)=> (
             <div key={post.id} className="posts">
