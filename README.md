@@ -20,18 +20,20 @@ git clone https://github.com/BrunojayParis/notesApp.git
 
 1. Ir a la carpeta del repositorio en tu computadora.
 
-2. Abrir un terminal en la carpeta del repo
+2. Abrir un terminal en la carpeta del repo.
 
-3.node-modules
+3.node-modules.
 
 ```bash
 npm install
 ```
-4. Instalar dependencias
+4. Instalar dependencias.
+
 ```bash
 npm i express morgan cors pg 
 ```
 5. Crear una base de datos en postgreSQL 
+
 ```bash
 CREATE DATABASE postsdb;
 
