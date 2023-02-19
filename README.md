@@ -21,7 +21,6 @@ git clone https://github.com/BrunojayParis/notesApp.git
 1. Ir a la carpeta del repositorio en tu computadora.
 
 2. Abrir un terminal en la carpeta del repo.
-
 3.node-modules.
 
 ```bash
@@ -47,7 +46,7 @@ CREATE TABLE post(
 
 ## Run
 
-Para correr el backend
+Para correr el Back-end
 ```bash
 npm start
 ```
