@@ -13,7 +13,7 @@ function PostForm(props) {
     const uniqueName = ()=>{
       return props.posts.some(names => names.postname.includes(post.postName))
     }
-    
+
     const handeChange = (e) =>{
       setPost({...post, [e.target.name]:e.target.value})
 
@@ -37,7 +37,7 @@ function PostForm(props) {
   
           props.setPosts([...props.posts, data])
         }else{
-          alert("post name must be unique")
+          alert("Post name must be unique")
         }
 
     }
