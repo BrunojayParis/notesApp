@@ -43,7 +43,8 @@ CREATE TABLE post(
 ```
 6. completar los datos de la DB en \src\database.js
 
-##Run
+## Run
+
 Para correr el backend
 ```bash
 npm start
