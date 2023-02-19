@@ -2,32 +2,44 @@ import { useState } from "react";
 
 function PostForm(props) {
     
+
     const [post, setPost] = useState({
         postName:"",
         postDescription:"",
       })//this will be the new post
     
-    const [loading, setLoading] = useState(false)  
+    const [loading, setLoading] = useState(false) 
+
+    const uniqueName = ()=>{
+      return props.posts.some(names => names.postname.includes(post.postName))
+    }
     
     const handeChange = (e) =>{
-        setPost({...post, [e.target.name]:e.target.value})
+      setPost({...post, [e.target.name]:e.target.value})
+
     }
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        const unique = uniqueName()
         
-        setLoading(true)
-        const response = await fetch("http://localhost:4000/posts",{
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(post),
-        });
-        const data = await response.json();
-        setLoading(false)
+        if (!unique){
+          setLoading(true)
+          const response = await fetch("http://localhost:4000/posts",{
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(post),
+          });
+          const data = await response.json();
+          setLoading(false)
+  
+          props.setPosts([...props.posts, data])
+        }else{
+          alert("post name must be unique")
+        }
 
-        props.setPosts([...props.posts, data])
     }
     return (
       <div>
