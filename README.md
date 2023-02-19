@@ -8,8 +8,7 @@ Challenge de desarrollo de aplicación en React con backend en NodeJS, Base de d
 
 1. Instalar Node, [Descargar NodeJs](https://nodejs.org/es/)
 
-2. Instalar postgresql, [Descargar postgresql](https://www.postgresql.org/download/). Puede ser dificil de instalar si nunca lo utilizaste antes, recomiendo ver un tutorial en Youitube.
-
+2. Instalar postgresql, [Descargar postgresql](https://www.postgresql.org/download/).
 3. Clonar este repositorio. 
 
 ```bash
