@@ -1,43 +1,49 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deletePost } from "../features/posts/postslice";
 
-function PostList(props) {
-    const[filter, setFilter]=useState('')
+function PostList() {
+    const [filter, setFilter] = useState('')
+    const postList = useSelector((state) => state.posts)
+    const dispatch = useDispatch()
 
-    const postList = props.posts
-    const handleDelete = async(id)=>{
-        await fetch(`http://localhost:4000/posts/${id}`,{
-            method: 'DELETE' 
+    const handleDelete = async (id) => {
+        await fetch(`http://localhost:4000/posts/${id}`, {
+            method: 'DELETE'
         });
-        props.setPosts(postList.filter((post)=> post.id !== id))
+
+        dispatch(deletePost(id))
 
     }
-    const filterHandler= (e) => {
+    const filterHandler = (e) => {
         setFilter(e.target.value);
     }
 
-    const filteredPosts = postList.filter((post)=> post.postname.toLowerCase().includes(filter.toLowerCase())) 
+    const filteredPosts = postList.filter((names)=> names.postname.toLowerCase().includes(filter.toLowerCase())) 
 
 
     return (
-      <div className="posts-list">
-        <form >
-            <input type="text" onChange={filterHandler} placeholder="Filter Posts" />
-        </form>
-        <div className="posts">
-            <h3 className="name">Name</h3>
-            <h3 className="description">Description</h3>
-            <h3>Action</h3>
-        </div>
-        {filteredPosts.map((post)=> (
-            <div key={post.id} className="posts">
-                <p className="name">{post.postname}</p>
-                <p className="description">{post.postdescription}</p>
-                <button onClick={()=>handleDelete(post.id)}>Delete</button>
+        <div className="posts-list">
+            <form >
+                <input type="text" onChange={filterHandler} placeholder="Filter Posts" />
+            </form>
+            <div className="posts">
+                <h3 className="name">Name</h3>
+                <h3 className="description">Description</h3>
+                <h3>Action</h3>
             </div>
-        ))}
-      </div>
+            <ul>
+                {filteredPosts.map((post) => (
+                    <div key={post.id} className="posts">
+                        <p className="name">{post.postname}</p>
+                        <p className="description">{post.postdescription}</p>
+                        <button onClick={() => handleDelete(post.id)}>Delete</button>
+                    </div>
+                ))}
+            </ul>
+
+        </div>
     );
-  }
-  
-  export default PostList;
-  
+}
+
+export default PostList;

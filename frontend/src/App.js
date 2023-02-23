@@ -1,24 +1,29 @@
 import PostForm from './components/PostForm';
 import './App.css';
-import { useEffect, useState} from 'react';
+import { useEffect } from 'react';
 import PostList from './components/PostList';
+import { useDispatch } from 'react-redux';
+import { initPost } from './features/posts/postslice';
 
 function App() {
 
-  const [posts, setPosts] = useState([])
-  const loadPosts = async ()=>{
+  //const [posts, setPosts] = useState([])
+  const dispatch = useDispatch()
+  const loadPosts = async () => {
     const response = await fetch("http://localhost:4000/posts")
     const data = await response.json()
-    setPosts(data)
+    dispatch(initPost(data))
   }
-  useEffect(()=>{
+
+  useEffect(() => {
     loadPosts()
-  },[])
+  }, [])
+
   return (
     <div className="App">
-        <h1> POST MANAGER</h1>
-        <PostList posts = {posts} setPosts = {setPosts}/>
-        <PostForm posts={posts} setPosts={setPosts} />
+      <h1> POST MANAGER</h1>
+      <PostList />
+      <PostForm />
     </div>
   );
 }
