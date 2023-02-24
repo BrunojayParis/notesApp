@@ -14,7 +14,7 @@ function PostForm() {
   const dispatch = useDispatch()
 
   const uniqueName = () => {
-    return posts.some((names) => names.postname.includes(post.postname))
+    return posts.some((names) => names.postname === post.postname)
   }
 
   const handeChange = (e) => {
@@ -39,6 +39,10 @@ function PostForm() {
       setLoading(false)
 
       dispatch(addPost(data))
+      setPost({
+        postname: "",
+        postdescription: "",
+      })
     } else {
       alert("Post name must be unique")
     }
@@ -47,8 +51,8 @@ function PostForm() {
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
-        <input className="name" type="text" name="postname" placeholder="post name"  onChange={handeChange} />
-        <input className="description" type="text" name="postdescription" placeholder="post description"  onChange={handeChange} />
+        <input className="name" type="text" name="postname" placeholder="post name" value={post.postname}  onChange={handeChange} />
+        <input className="description" type="text" name="postdescription" placeholder="post description" value={post.postdescription} onChange={handeChange} />
         <input type="submit" value={loading ? "loading..." : "create"} />
       </form>
     </div>

@@ -9,6 +9,7 @@ Challenge de desarrollo de aplicación en React con backend en NodeJS, Base de d
 1. Instalar Node, [Descargar NodeJs](https://nodejs.org/es/)
 
 2. Instalar postgresql, [Descargar postgresql](https://www.postgresql.org/download/).
+
 3. Clonar este repositorio. 
 
 ```bash
@@ -21,7 +22,7 @@ git clone https://github.com/BrunojayParis/notesApp.git
 
 2. Abrir un terminal en la carpeta del repo.
 
-3. Node-modules.
+3. Instalar Node-modules.
 
 ```bash
 cd notesApp
@@ -32,20 +33,14 @@ npm install
 4. Instalar dependencias.
 
 ```bash
-npm i express morgan cors pg 
-```
-5. Crear una base de datos en postgreSQL 
+cd notesApp
+npm i express morgan cors sequelize pg pg pg-hstore
 
-```bash
-CREATE DATABASE postsdb;
-
-CREATE TABLE post(
-    id SERIAL PRIMARY KEY,
-    postname VARCHAR(255) UNIQUE,
-    postdescription VARCHAR(255)
-);
+cd frontend
+npm install @reduxjs/toolkit react-redux
 ```
-6. completar los datos de la DB en \src\database.js
+
+5. completar los datos de la DB en \src\database\database.js
 
 ## Run
 
