@@ -34,7 +34,7 @@ npm install
 
 ```bash
 cd notesApp
-npm i express morgan cors sequelize pg pg pg-hstore
+npm i express morgan cors sequelize pg pg-hstore
 
 cd frontend
 npm install @reduxjs/toolkit react-redux
