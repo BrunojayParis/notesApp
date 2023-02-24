@@ -1,5 +1,6 @@
 import { posts } from "../models/posts.js";
 
+//GET
 export const getPosts = async (req, res) => {
     try {
         const allPosts = await posts.findAll();
@@ -10,6 +11,7 @@ export const getPosts = async (req, res) => {
 
 }
 
+//POST
 export const createPost = async (req, res) => {
     const { postname, postdescription } = req.body;
 
@@ -26,6 +28,7 @@ export const createPost = async (req, res) => {
     }
 }
 
+//DELETE
 export const deletePost = async (req, res) => {
     const { id } = req.params;
     try {

@@ -13,7 +13,7 @@ function App() {
   const loadPosts = async () => {
     const response = await fetch("http://localhost:4000/posts")
     const data = await response.json()
-    dispatch(initPost(data))
+    dispatch(initPost(data))//initialize the state from the backend every time the page is refreshed
   }
 
   useEffect(() => {

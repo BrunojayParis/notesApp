@@ -9,21 +9,21 @@ function PostForm() {
     postdescription: "",
   })//this will be the new post
 
-  const [loading, setLoading] = useState(false)
-  //redux
-  const posts = useSelector((state)=> state.posts)
+  const [loading, setLoading] = useState(false) //loading state for the "create" button
+
+  const posts = useSelector((state)=> state.posts)//posts array from redux store
   const dispatch = useDispatch()
 
   const uniqueName = () => {
-    return posts.some((names) => names.postname === post.postname)
+    return posts.some((names) => names.postname === post.postname)// unique name validation function
   }
 
   const handeChange = (e) => {
-    setPost({ ...post, [e.target.name]: e.target.value })
-
+    setPost({ ...post, [e.target.name]: e.target.value }) 
   }
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault();//prevents the page to reload on submit
     const unique = uniqueName()
 
     if (!unique) {
@@ -39,13 +39,14 @@ function PostForm() {
       const data = await response.json();
       setLoading(false)
 
-      dispatch(addPost(data))
+      dispatch(addPost(data))//add post action
 
+      //clear values after submitting
       setPost({
         postname: "",
         postdescription: "",
       })
-      
+
     } else {
       alert("Post name must be unique")
     }

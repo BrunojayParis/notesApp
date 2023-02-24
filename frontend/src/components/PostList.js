@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../features/posts/postslice";
 
 function PostList() {
-    const [filter, setFilter] = useState('')
+    const [filter, setFilter] = useState('')//filter state to filter posts
+
     //redux
-    const postList = useSelector((state) => state.posts)
+    const postList = useSelector((state) => state.posts)//posts array from redux store
     const dispatch = useDispatch()
 
     const handleDelete = async (id) => {
@@ -13,7 +14,7 @@ function PostList() {
             method: 'DELETE'
         });
 
-        dispatch(deletePost(id))
+        dispatch(deletePost(id))//delete post action
 
     }
 
@@ -21,7 +22,7 @@ function PostList() {
         setFilter(e.target.value);
     }
 
-    const filteredPosts = postList.filter((names) => names.postname.toLowerCase().includes(filter.toLowerCase()))
+    const filteredPosts = postList.filter((names) => names.postname.toLowerCase().includes(filter.toLowerCase()))//show filtered posts
 
     return (
         <div className="posts-list">

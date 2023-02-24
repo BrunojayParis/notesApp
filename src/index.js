@@ -4,6 +4,7 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 
+//Routes
 import postsRoutes from './routes/posts.routes.js'
 
 const app = express()
@@ -20,7 +21,7 @@ async function main() {
     try {
         app.listen(4000)
         console.log('server on port 4000')
-        sequelize.sync({force:false});
+        await sequelize.sync({force:false});//connect to database, {force:true} will drop the database and create a new one.
     } catch (error) {
         console.error('Unable to connect to the database:', error);
     }
