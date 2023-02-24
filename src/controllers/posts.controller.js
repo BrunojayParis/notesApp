@@ -1,49 +1,43 @@
-const pool = require('../database')
+import { posts } from "../models/posts.js";
 
-const getPosts = async (req,res)=>{
+export const getPosts = async (req, res) => {
     try {
-        const allPosts = await pool.query("SELECT * FROM post");
-        res.json(allPosts.rows);    
+        const allPosts = await posts.findAll();
+        res.json(allPosts);
     } catch (error) {
-        res.json({error: error.message})   
+        res.json({ error: error.message })
     }
-    
+
 }
 
-const createPost = async(req,res)=>{
-    const {postName, postDescription} = req.body;
+export const createPost = async (req, res) => {
+    const { postname, postdescription } = req.body;
 
     try {
-        const result = await pool.query(
-            "INSERT INTO post (postname, postdescription) VALUES ($1, $2) RETURNING *",
-            [postName, postDescription]
-        );
+        const newPost = await posts.create({
+            postname,
+            postdescription
+        })
 
-        res.json(result.rows[0])
-    } catch (error) {
-        res.json({error: error.message})
-    }
-}
-
-const deletePost = async (req,res)=>{
-    const {id} = req.params;
-    try {
-        const result = await pool.query("DELETE FROM post WHERE id = $1",[id])
-
-        if(result.rowCount === 0 )
-            return res.status(404).json({
-                message:"post not found"
-            });
+        res.json(newPost)
         
+    } catch (error) {
+        res.json({ error: error.message })
+    }
+}
+
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+    try {
+        await posts.destroy({
+            where: {
+                id,
+            }
+        })
+
         return res.sendStatus(204);
     } catch (error) {
-        res.json({error: error.message})
+        res.json({ error: error.message })
     }
 
-}
-
-module.exports = {
-    getPosts,
-    deletePost,
-    createPost
 }

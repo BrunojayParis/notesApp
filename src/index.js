@@ -1,8 +1,11 @@
-const express = require('express')
-const morgan = require('morgan')
-const cors = require('cors')
+import {sequelize}  from './database/database.js'
+import './models/posts.js'
+import express from 'express'
+import morgan from 'morgan'
+import cors from 'cors'
 
-const postsRoutes = require('./routes/posts.routes')
+import postsRoutes from './routes/posts.routes.js'
+
 const app = express()
 
 //middlewares
@@ -12,6 +15,15 @@ app.use(express.json())
 app.use(postsRoutes)
 
 
-app.listen(4000)
+async function main() {
 
-console.log('server on port 4000')
+    try {
+        app.listen(4000)
+        console.log('server on port 4000')
+        sequelize.sync({force:false});
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+}
+
+main();

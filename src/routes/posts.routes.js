@@ -1,5 +1,5 @@
-const {Router} = require('express')
-const {getPosts, deletePost, createPost} = require('../controllers/posts.controller')
+import {Router} from 'express'
+import {getPosts, deletePost, createPost} from'../controllers/posts.controller.js'
 
 const router = Router()
 //GET
@@ -13,6 +13,6 @@ router.delete('/posts/:id', deletePost)
 
 
 
-module.exports = router;
+export default router
 
 

@@ -5,8 +5,8 @@ import { addPost } from "../features/posts/postslice";
 function PostForm() {
 
   const [post, setPost] = useState({
-    postName: "",
-    postDescription: "",
+    postname: "",
+    postdescription: "",
   })//this will be the new post
 
   const [loading, setLoading] = useState(false)
@@ -14,7 +14,7 @@ function PostForm() {
   const dispatch = useDispatch()
 
   const uniqueName = () => {
-    return posts.some(names => names.postname.includes(post.postName))
+    return posts.some((names) => names.postname.includes(post.postname))
   }
 
   const handeChange = (e) => {
@@ -47,8 +47,8 @@ function PostForm() {
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
-        <input className="name" type="text" name="postName" placeholder="post name"  onChange={handeChange} />
-        <input className="description" type="text" name="postDescription" placeholder="post description"  onChange={handeChange} />
+        <input className="name" type="text" name="postname" placeholder="post name"  onChange={handeChange} />
+        <input className="description" type="text" name="postdescription" placeholder="post description"  onChange={handeChange} />
         <input type="submit" value={loading ? "loading..." : "create"} />
       </form>
     </div>
