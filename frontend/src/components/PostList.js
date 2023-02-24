@@ -4,6 +4,7 @@ import { deletePost } from "../features/posts/postslice";
 
 function PostList() {
     const [filter, setFilter] = useState('')
+    //redux
     const postList = useSelector((state) => state.posts)
     const dispatch = useDispatch()
 
@@ -15,12 +16,12 @@ function PostList() {
         dispatch(deletePost(id))
 
     }
+
     const filterHandler = (e) => {
         setFilter(e.target.value);
     }
 
-    const filteredPosts = postList.filter((names)=> names.postname.toLowerCase().includes(filter.toLowerCase())) 
-
+    const filteredPosts = postList.filter((names) => names.postname.toLowerCase().includes(filter.toLowerCase()))
 
     return (
         <div className="posts-list">
@@ -41,7 +42,6 @@ function PostList() {
                     </div>
                 ))}
             </ul>
-
         </div>
     );
 }

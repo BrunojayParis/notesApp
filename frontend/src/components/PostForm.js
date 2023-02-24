@@ -10,6 +10,7 @@ function PostForm() {
   })//this will be the new post
 
   const [loading, setLoading] = useState(false)
+  //redux
   const posts = useSelector((state)=> state.posts)
   const dispatch = useDispatch()
 
@@ -39,10 +40,12 @@ function PostForm() {
       setLoading(false)
 
       dispatch(addPost(data))
+
       setPost({
         postname: "",
         postdescription: "",
       })
+      
     } else {
       alert("Post name must be unique")
     }

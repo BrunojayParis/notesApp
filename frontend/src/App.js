@@ -1,13 +1,13 @@
-import PostForm from './components/PostForm';
 import './App.css';
+
 import { useEffect } from 'react';
-import PostList from './components/PostList';
 import { useDispatch } from 'react-redux';
 import { initPost } from './features/posts/postslice';
 
+import PostForm from './components/PostForm';
+import PostList from './components/PostList';
 function App() {
 
-  //const [posts, setPosts] = useState([])
   const dispatch = useDispatch()
   
   const loadPosts = async () => {
@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     loadPosts()
-  }, [])
+  }, [])// eslint-disable-line
 
   return (
     <div className="App">
